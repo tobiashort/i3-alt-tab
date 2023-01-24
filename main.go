@@ -19,7 +19,7 @@ func main() {
 		select {
 		case sig := <-signals:
 			if sig == syscall.SIGUSR1 {
-				i3.SwapFocus()
+				i3.SwapWorkspace()
 			}
 		}
 	}

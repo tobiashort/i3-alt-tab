@@ -1,4 +1,4 @@
-Binds Alt+Tab in order to focus back and forth the last two visited windows.
+Binds Alt+Tab in order to focus back and forth the last two visited workspaces.
 
 ```
 ~/.config/i3/config
