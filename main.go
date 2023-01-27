@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
@@ -9,18 +8,28 @@ import (
 	"github.com/t-hg/i3-alt-tab/i3"
 )
 
+var previous i3.Workspace
+var current i3.Workspace
+
 func main() {
-	fmt.Println("Process", os.Getpid())
-	i3 := i3.Connect()
-	defer i3.Close()
+	current = i3.FocusedWorkspace()
+	previous = current
+
+	go i3.OnWorkspaceChange(
+		// focus
+		func(curr i3.Workspace, prev i3.Workspace) {
+			previous = prev
+			current = curr
+		},
+	)
+
 	signals := make(chan os.Signal)
 	signal.Notify(signals, syscall.SIGUSR1)
+
 	for {
 		select {
-		case sig := <-signals:
-			if sig == syscall.SIGUSR1 {
-				i3.SwapWorkspace()
-			}
+		case _ = <-signals:
+			i3.FocusWorkspace(previous)
 		}
 	}
 }
