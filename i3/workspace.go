@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/t-hg/i3-alt-tab/must"
+	"github.com/tobiashort/i3-alt-tab/must"
 )
 
 type Workspace struct {

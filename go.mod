@@ -1,3 +1,3 @@
-module github.com/t-hg/i3-alt-tab
+module github.com/tobiashort/i3-alt-tab
 
 go 1.19

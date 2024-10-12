@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/t-hg/i3-alt-tab/i3"
+	"github.com/tobiashort/i3-alt-tab/i3"
 )
 
 var previous i3.Workspace
